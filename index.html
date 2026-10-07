@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jalaram Locho | Surat's Favourite Locho</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #fffaf0;
+    }
+
+    .brand-font {
+        font-family: 'Baloo 2', cursive;
+    }
+
+    .hero-bg {
+        background:
+            radial-gradient(circle at 80% 20%, rgba(255,193,7,.35), transparent 25%),
+            radial-gradient(circle at 15% 80%, rgba(239,68,68,.18), transparent 25%),
+            linear-gradient(135deg, #fff7df, #fff1c2);
+    }
+
+    .food-card {
+        transition: .35s ease;
+    }
+
+    .food-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 45px rgba(124, 45, 18, .14);
+    }
+
+    .food-image {
+        transition: .5s ease;
+    }
+
+    .food-card:hover .food-image {
+        transform: scale(1.08) rotate(2deg);
+    }
+
+    .floating {
+        animation: floating 4s ease-in-out infinite;
+    }
+
+    @keyframes floating {
+        0%,100% { transform: translateY(0); }
+        50% { transform: translateY(-14px); }
+    }
+
+    .pulse-btn {
+        animation: pulseBtn 2s infinite;
+    }
+
+    @keyframes pulseBtn {
+        0% { box-shadow: 0 0 0 0 rgba(220,38,38,.35); }
+        70% { box-shadow: 0 0 0 15px rgba(220,38,38,0); }
+        100% { box-shadow: 0 0 0 0 rgba(220,38,38,0); }
+    }
+
+    .pattern {
+        background-image:
+            radial-gradient(#f59e0b 1px, transparent 1px);
+        background-size: 18px 18px;
+    }
+
+    .menu-filter.active {
+        background: #dc2626;
+        color: white;
+    }
+
+    .cart-drawer {
+        transition: transform .4s ease;
+    }
+
+    .cart-open {
+        transform: translateX(0) !important;
+    }
+
+    .overlay {
+        transition: opacity .3s ease;
+    }
+
+    .hide {
+        display: none;
+    }
+
+    .toast {
+        animation: toastIn .4s ease;
+    }
+
+    @keyframes toastIn {
+        from {
+            transform: translate(-50%, 30px);
+            opacity: 0;
+        }
+        to {
+            transform: translate(-50%, 0);
+            opacity: 1;
+        }
+    }
+</style>
+</head>
+
+<body class="text-stone-800">
+
+<!-- NAVBAR -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-lg border-b border-orange-100">
+    <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
+
+        <a href="#home" class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-full bg-red-600 text-white flex items-center justify-center text-2xl shadow-lg">
+                🥣
+            </div>
+
+            <div>
+                <h1 class="brand-font text-2xl font-extrabold text-red-600 leading-none">
+                    Jalaram
+                </h1>
+                <span class="text-xs font-semibold tracking-widest text-orange-600">
+                    LOCHO HOUSE
+                </span>
+            </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 font-medium">
+            <a href="#home" class="hover:text-red-600 transition">Home</a>
+            <a href="#about" class="hover:text-red-600 transition">About</a>
+            <a href="#menu" class="hover:text-red-600 transition">Menu</a>
+            <a href="#why-us" class="hover:text-red-600 transition">Why Us</a>
+            <a href="#contact" class="hover:text-red-600 transition">Contact</a>
+        </nav>
+
+        <button onclick="openCart()"
+            class="relative bg-red-600 text-white px-5 py-2.5 rounded-full font-semibold hover:bg-red-700 transition">
+            🛒 Cart
+            <span id="cartCount"
+                class="absolute -top-2 -right-2 bg-yellow-400 text-red-900 text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center">
+                0
+            </span>
+        </button>
+    </div>
+</header>
+
+
+<!-- HERO -->
+<section id="home" class="hero-bg min-h-screen pt-28 flex items-center overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5 py-16 grid lg:grid-cols-2 gap-12 items-center">
+
+        <div>
+            <div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm mb-6">
+                <span class="text-xl">🔥</span>
+                <span class="text-sm font-semibold text-red-600">
+                    Surat's Favourite Street Food
+                </span>
+            </div>
+
+            <h2 class="brand-font text-6xl md:text-8xl font-extrabold leading-[.85] text-red-600">
+                LOCHO
+            </h2>
+
+            <h3 class="brand-font text-4xl md:text-5xl font-bold text-orange-600 mt-3">
+                Garam • Soft • Swadisht
+            </h3>
+
+            <p class="mt-6 text-stone-600 text-lg max-w-xl leading-relaxed">
+                Experience the authentic taste of Surat with our freshly steamed,
+                soft and delicious locho loaded with sev, butter, chutneys and love.
+            </p>
+
+            <div class="flex flex-wrap gap-4 mt-8">
+                <a href="#menu"
+                    class="pulse-btn bg-red-600 text-white px-7 py-4 rounded-full font-bold hover:bg-red-700 transition">
+                    🍽️ Explore Menu
+                </a>
+
+                <a href="#about"
+                    class="bg-white border-2 border-orange-200 text-orange-700 px-7 py-4 rounded-full font-bold hover:bg-orange-50 transition">
+                    Our Story →
+                </a>
+            </div>
+
+            <div class="flex gap-8 mt-10">
+                <div>
+                    <div class="text-3xl font-bold text-red-600">10+</div>
+                    <div class="text-sm text-stone-500">Years of Taste</div>
+                </div>
+
+                <div>
+                    <div class="text-3xl font-bold text-red-600">25K+</div>
+                    <div class="text-sm text-stone-500">Happy Customers</div>
+                </div>
+
+                <div>
+                    <div class="text-3xl font-bold text-red-600">4.9★</div>
+                    <div class="text-sm text-stone-500">Customer Rating</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative flex justify-center">
+
+            <div class="absolute w-80 h-80 md:w-[480px] md:h-[480px] rounded-full bg-yellow-300/50 blur-2xl"></div>
+
+            <div class="relative floating">
+                <div class="text-[190px] md:text-[270px] drop-shadow-2xl">
+                    🥣
+                </div>
+
+                <div class="absolute -right-5 top-10 bg-white rounded-2xl shadow-xl p-4 rotate-6">
+                    <div class="text-2xl">🌶️</div>
+                    <div class="font-bold text-red-600">Extra Spicy</div>
+                </div>
+
+                <div class="absolute -left-10 bottom-16 bg-white rounded-2xl shadow-xl p-4 -rotate-6">
+                    <div class="text-2xl">✨</div>
+                    <div class="font-bold text-orange-600">Fresh Daily</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ABOUT -->
+<section id="about" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5">
+
+        <div class="grid lg:grid-cols-2 gap-14 items-center">
+
+            <div class="relative">
+                <div class="pattern absolute -top-6 -left-6 w-32 h-32 rounded-3xl opacity-30"></div>
+
+                <div class="relative bg-gradient-to-br from-orange-100 to-yellow-50 rounded-[40px] p-10 text-center">
+                    <div class="text-[160px]">🥣</div>
+
+                    <div class="bg-white rounded-2xl shadow-lg p-5 max-w-xs mx-auto">
+                        <div class="text-red-600 font-bold text-xl brand-font">
+                            Made Fresh Every Day
+                        </div>
+                        <p class="text-sm text-stone-500 mt-1">
+                            Softness you can feel. Taste you won't forget.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span class="text-red-600 font-bold tracking-widest uppercase text-sm">
+                    About Jalaram
+                </span>
+
+                <h2 class="brand-font text-5xl font-extrabold text-stone-900 mt-2">
+                    A Little Bowl of <span class="text-red-600">Surat's Soul</span>
+                </h2>
+
+                <p class="mt-6 text-stone-600 leading-8">
+                    At Jalaram Locho, we believe that great food doesn't need to be
+                    complicated. Our locho is prepared fresh, steamed to perfection
+                    and served hot with our special toppings and chutneys.
+                </p>
+
+                <p class="mt-4 text-stone-600 leading-8">
+                    From a quick morning breakfast to an evening snack with friends,
+                    every plate is prepared with the same love and authentic Surat
+                    street-food flavour.
+                </p>
+
+                <div class="grid grid-cols-2 gap-5 mt-8">
+                    <div class="bg-orange-50 rounded-2xl p-5">
+                        <div class="text-3xl">🌾</div>
+                        <h4 class="font-bold mt-2">Quality Ingredients</h4>
+                        <p class="text-sm text-stone-500 mt-1">
+                            Carefully selected ingredients.
+                        </p>
+                    </div>
+
+                    <div class="bg-red-50 rounded-2xl p-5">
+                        <div class="text-3xl">❤️</div>
+                        <h4 class="font-bold mt-2">Made With Love</h4>
+                        <p class="text-sm text-stone-500 mt-1">
+                            Every plate matters to us.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- MENU -->
+<section id="menu" class="py-24 bg-[#fff8e8]">
+    <div class="max-w-7xl mx-auto px-5">
+
+        <div class="text-center max-w-2xl mx-auto">
+            <span class="text-red-600 font-bold tracking-widest uppercase text-sm">
+                Our Menu
+            </span>
+
+            <h2 class="brand-font text-5xl font-extrabold mt-2">
+                Pick Your <span class="text-red-600">Favourite</span>
+            </h2>
+
+            <p class="text-stone-500 mt-4">
+                Hot, fresh and loaded with flavours. Order your favourite locho now.
+            </p>
+        </div>
+
+        <!-- FILTER -->
+        <div class="flex flex-wrap justify-center gap-3 mt-10">
+            <button class="menu-filter active px-5 py-2 rounded-full border border-red-200 font-semibold transition"
+                onclick="filterMenu('all',this)">
+                All
+            </button>
+
+            <button class="menu-filter px-5 py-2 rounded-full border border-red-200 font-semibold transition"
+                onclick="filterMenu('locho',this)">
+                Locho
+            </button>
+
+            <button class="menu-filter px-5 py-2 rounded-full border border-red-200 font-semibold transition"
+                onclick="filterMenu('combo',this)">
+                Combos
+            </button>
+
+            <button class="menu-filter px-5 py-2 rounded-full border border-red-200 font-semibold transition"
+                onclick="filterMenu('drink',this)">
+                Drinks
+            </button>
+        </div>
+
+
+        <div id="menuGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-7 mt-12">
+
+            <!-- ITEM -->
+            <div class="food-card menu-item locho bg-white rounded-3xl p-5 shadow-sm">
+                <div class="overflow-hidden rounded-2xl bg-orange-50 h-52 flex items-center justify-center">
+                    <div class="food-image text-[130px]">🥣</div>
+                </div>
+
+                <div class="pt-5">
+                    <div class="flex justify-between gap-3">
+                        <h3 class="brand-font text-2xl font-bold">Classic Locho</h3>
+                        <span class="font-bold text-red-600">₹60</span>
+                    </div>
+
+                    <p class="text-sm text-stone-500 mt-2">
+                        Soft steamed locho with sev, chutney and masala.
+                    </p>
+
+                    <button onclick="addToCart('Classic Locho',60)"
+                        class="mt-5 w-full bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700 transition">
+                        + Add to Cart
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="food-card menu-item locho bg-white rounded-3xl p-5 shadow-sm">
+                <div class="overflow-hidden rounded-2xl bg-yellow-50 h-52 flex items-center justify-center">
+                    <div class="food-image text-[130px]">🥣</div>
+                </div>
+
+                <div class="pt-5">
+                    <div class="flex justify-between gap-3">
+                        <h3 class="brand-font text-2xl font-bold">Butter Locho</h3>
+                        <span class="font-bold text-red-600">₹80</span>
+                    </div>
+
+                    <p class="text-sm text-stone-500 mt-2">
+                        Creamy butter loaded locho with special masala.
+                    </p>
+
+                    <button onclick="addToCart('Butter Locho',80)"
+                        class="mt-5 w-full bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700 transition">
+                        + Add to Cart
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="food-card menu-item locho bg-white rounded-3xl p-5 shadow-sm">
+                <div class="overflow-hidden rounded-2xl bg-red-50 h-52 flex items-center justify-center">
+                    <div class="food-image text-[130px]">🥣</div>
+                </div>
+
+                <div class="pt-5">
+                    <div class="flex justify-between gap-3">
+                        <h3 class="brand-font text-2xl font-bold">Cheese Locho</h3>
+                        <span class="font-bold text-red-600">₹100</span>
+                    </div>
+
+                    <p class="text-sm text-stone-500 mt-2">
+                        Hot locho topped with melted cheese and spicy chutney.
+                    </p>
+
+                    <button onclick="addToCart('Cheese Locho',100)"
+                        class="mt-5 w-full bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700 transition">
+                        + Add to Cart
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="food-card menu-item combo bg-white rounded-3xl p-5 shadow-sm">
+                <div class="overflow-hidden rounded-2xl bg-orange-50 h-52 flex items-center justify-center">
+                    <div class="food-image text-[130px]">🍽️</div>
+                </div>
+
+                <div class="pt-5">
+                    <div class="flex justify-between gap-3">
+                        <h3 class="brand-font text-2xl font-bold">Jalaram Combo</h3>
+                        <span class="font-bold text-red-600">₹149</span>
+                    </div>
+
+                    <p class="text-sm text-stone-500 mt-2">
+                        Classic locho, cheese topping, chutney and cold drink.
+                    </p>
+
+                    <button onclick="addToCart('Jalaram Combo',149)"
+                        class="mt-5 w-full bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700 transition">
+                        + Add to Cart
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="food-card menu-item combo bg-white rounded-3xl p-5 shadow-sm">
+                <div class="overflow-hidden rounded-2xl bg-yellow-50 h-52 flex items-center justify-center">
+                    <div class="food-image text-[130px]">🍽️</div>
+                </div>
+
+                <div class="pt-5">
+                    <div class="flex justify-between gap-3">
+                        <h3 class="brand-font text-2xl font-bold">Family Combo</h3>
+                        <span class="font-bold text-red-600">₹299</span>
+                    </div>
+
+                    <p class="text-sm text-stone-500 mt-2">
+                        3 classic locho, 1 cheese locho and 3 drinks.
+                    </p>
+
+                    <button onclick="addToCart('Family Combo',299)"
+                        class="mt-5 w-full bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700 transition">
+                        + Add to Cart
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="food-card menu-item drink bg-white rounded-3xl p-5 shadow-sm">
+                <div class="overflow-hidden rounded-2xl bg-orange-50 h-52 flex items-center justify-center">
+                    <div class="food-image text-[130px]">🥤</div>
+                </div>
+
+                <div class="pt-5">
+                    <div class="flex justify-between gap-3">
+                        <h3 class="brand-font text-2xl font-bold">Masala Chaas</h3>
+                        <span class="font-bold text-red-600">₹40</span>
+                    </div>
+
+                    <p class="text-sm text-stone-500 mt-2">
+                        Refreshing chilled chaas with traditional masala.
+                    </p>
+
+                    <button onclick="addToCart('Masala Chaas',40)"
+                        class="mt-5 w-full bg-red-600 text-white py-3 rounded-xl font-bold hover:bg-red-700 transition">
+                        + Add to Cart
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- WHY US -->
+<section id="why-us" class="py-24 bg-red-600 text-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-5">
+
+        <div class="text-center max-w-2xl mx-auto">
+            <span class="text-yellow-300 font-bold tracking-widest uppercase text-sm">
+                Why Jalaram?
+            </span>
+
+            <h2 class="brand-font text-5xl font-extrabold mt-2">
+                More Than Just Locho
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-7 mt-14">
+
+            <div class="bg-white/10 border border-white/10 rounded-3xl p-8 text-center">
+                <div class="text-6xl">🔥</div>
+                <h3 class="brand-font text-2xl font-bold mt-5">Always Fresh</h3>
+                <p class="text-red-100 mt-3">
+                    Prepared fresh throughout the day and served piping hot.
+                </p>
+            </div>
+
+            <div class="bg-white/10 border border-white/10 rounded-3xl p-8 text-center">
+                <div class="text-6xl">🌶️</div>
+                <h3 class="brand-font text-2xl font-bold mt-5">Authentic Taste</h3>
+                <p class="text-red-100 mt-3">
+                    Traditional Surat-style flavours in every delicious bite.
+                </p>
+            </div>
+
+            <div class="bg-white/10 border border-white/10 rounded-3xl p-8 text-center">
+                <div class="text-6xl">❤️</div>
+                <h3 class="brand-font text-2xl font-bold mt-5">Made With Love</h3>
+                <p class="text-red-100 mt-3">
+                    We treat every customer like family and every plate like our own.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- REVIEWS -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-5">
+
+        <div class="text-center">
+            <span class="text-red-600 font-bold tracking-widest uppercase text-sm">
+                Customer Love
+            </span>
+
+            <h2 class="brand-font text-5xl font-extrabold mt-2">
+                What People Say
+            </h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-7 mt-12">
+
+            <div class="bg-[#fff8e8] p-7 rounded-3xl">
+                <div class="text-yellow-500 text-xl">★★★★★</div>
+                <p class="mt-5 text-stone-600 leading-7">
+                    "The classic locho is absolutely amazing. Soft, hot and perfectly
+                    spicy. One of my favourite places in Surat!"
+                </p>
+
+                <div class="flex items-center gap-3 mt-6">
+                    <div class="w-11 h-11 rounded-full bg-red-100 flex items-center justify-center">
+                        👨
+                    </div>
+                    <div>
+                        <div class="font-bold">Rahul P.</div>
+                        <div class="text-xs text-stone-500">Surat</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="bg-[#fff8e8] p-7 rounded-3xl">
+                <div class="text-yellow-500 text-xl">★★★★★</div>
+                <p class="mt-5 text-stone-600 leading-7">
+                    "Cheese locho with extra sev is a must try. The quantity is good
+                    and the taste is even better!"
+                </p>
+
+                <div class="flex items-center gap-3 mt-6">
+                    <div class="w-11 h-11 rounded-full bg-red-100 flex items-center justify-center">
+                        👩
+                    </div>
+                    <div>
+                        <div class="font-bold">Priya S.</div>
+                        <div class="text-xs text-stone-500">Surat</div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="bg-[#fff8e8] p-7 rounded-3xl">
+                <div class="text-yellow-500 text-xl">★★★★★</div>
+                <p class="mt-5 text-stone-600 leading-7">
+                    "Great place for evening snacks with friends. The family combo
+                    is totally worth it."
+                </p>
+
+                <div class="flex items-center gap-3 mt-6">
+                    <div class="w-11 h-11 rounded-full bg-red-100 flex items-center justify-center">
+                        👨
+                    </div>
+                    <div>
+                        <div class="font-bold">Dev M.</div>
+                        <div class="text-xs text-stone-500">Surat</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="py-24 bg-[#fff8e8]">
+    <div class="max-w-7xl mx-auto px-5">
+
+        <div class="grid lg:grid-cols-2 gap-12">
+
+            <div>
+                <span class="text-red-600 font-bold tracking-widest uppercase text-sm">
+                    Visit Us
+                </span>
+
+                <h2 class="brand-font text-5xl font-extrabold mt-2">
+                    Come Hungry.<br>
+                    <span class="text-red-600">Leave Happy.</span>
+                </h2>
+
+                <p class="text-stone-600 mt-5 leading-7 max-w-lg">
+                    Drop by Jalaram Locho and enjoy freshly prepared Surat-style
+                    locho with your friends and family.
+                </p>
+
+                <div class="space-y-5 mt-8">
+
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-xl">
+                            📍
+                        </div>
+                        <div>
+                            <div class="font-bold">Our Location</div>
+                            <div class="text-stone-500">
+                                Surat, Gujarat, India
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-xl">
+                            🕐
+                        </div>
+                        <div>
+                            <div class="font-bold">Opening Hours</div>
+                            <div class="text-stone-500">
+                                8:00 AM – 11:00 PM
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-red-100 flex items-center justify-center text-xl">
+                            📞
+                        </div>
+                        <div>
+                            <div class="font-bold">Call Us</div>
+                            <div class="text-stone-500">
+                                +91 98765 43210
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="bg-white rounded-3xl p-8 shadow-xl">
+
+                <h3 class="brand-font text-3xl font-bold">
+                    Send Us a Message
+                </h3>
+
+                <form onsubmit="submitForm(event)" class="mt-6 space-y-5">
+
+                    <input
+                        type="text"
+                        placeholder="Your Name"
+                        required
+                        class="w-full px-5 py-4 rounded-xl bg-stone-50 border border-stone-200 outline-none focus:border-red-500">
+
+                    <input
+                        type="tel"
+                        placeholder="Phone Number"
+                        required
+                        class="w-full px-5 py-4 rounded-xl bg-stone-50 border border-stone-200 outline-none focus:border-red-500">
+
+                    <textarea
+                        rows="4"
+                        placeholder="Your Message"
+                        required
+                        class="w-full px-5 py-4 rounded-xl bg-stone-50 border border-stone-200 outline-none focus:border-red-500"></textarea>
+
+                    <button
+                        class="w-full bg-red-600 text-white py-4 rounded-xl font-bold hover:bg-red-700 transition">
+                        Send Message ❤️
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer class="bg-stone-950 text-white pt-14 pb-7">
+
+    <div class="max-w-7xl mx-auto px-5">
+
+        <div class="grid md:grid-cols-4 gap-10">
+
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center text-2xl">
+                        🥣
+                    </div>
+
+                    <div>
+                        <div class="brand-font text-3xl font-bold">
+                            Jalaram
+                        </div>
+                        <div class="text-xs tracking-widest text-yellow-400">
+                            LOCHO HOUSE
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-stone-400 mt-5 max-w-md leading-7">
+                    Authentic Surat-style locho, served hot and fresh with flavours
+                    that keep you coming back for more.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg">Quick Links</h4>
+
+                <div class="space-y-3 mt-5 text-stone-400">
+                    <a href="#home" class="block hover:text-white">Home</a>
+                    <a href="#about" class="block hover:text-white">About</a>
+                    <a href="#menu" class="block hover:text-white">Menu</a>
+                    <a href="#contact" class="block hover:text-white">Contact</a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-bold text-lg">Follow Us</h4>
+
+                <div class="flex gap-3 mt-5">
+                    <a href="#" class="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-600 transition">📷</a>
+                    <a href="#" class="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-600 transition">💬</a>
+                    <a href="#" class="w-11 h-11 bg-white/10 rounded-full flex items-center justify-center hover:bg-red-600 transition">▶️</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="border-t border-white/10 mt-12 pt-6 text-center text-sm text-stone-500">
+            © 2026 Jalaram Locho. Made with ❤️ in Surat.
+        </div>
+
+    </div>
+</footer>
+
+
+<!-- CART OVERLAY -->
+<div id="cartOverlay"
+    onclick="closeCart()"
+    class="fixed inset-0 bg-black/50 z-[60] opacity-0 pointer-events-none overlay">
+</div>
+
+
+<!-- CART DRAWER -->
+<div id="cartDrawer"
+    class="cart-drawer fixed top-0 right-0 bottom-0 w-full sm:w-[420px] bg-white z-[70] translate-x-full shadow-2xl flex flex-col">
+
+    <div class="flex items-center justify-between p-6 border-b">
+        <div>
+            <h2 class="brand-font text-3xl font-bold">Your Cart</h2>
+            <p class="text-sm text-stone-500">Freshness is waiting!</p>
+        </div>
+
+        <button onclick="closeCart()"
+            class="w-10 h-10 rounded-full bg-stone-100 hover:bg-red-100 text-xl">
+            ×
+        </button>
+    </div>
+
+
+    <div id="cartItems" class="flex-1 overflow-y-auto p-6">
+        <div class="text-center py-20 text-stone-400">
+            <div class="text-6xl">🛒</div>
+            <p class="mt-4">Your cart is empty.</p>
+        </div>
+    </div>
+
+
+    <div class="border-t p-6">
+
+        <div class="flex justify-between text-lg font-bold">
+            <span>Total</span>
+            <span id="cartTotal" class="text-red-600">₹0</span>
+        </div>
+
+        <button onclick="checkout()"
+            class="w-full mt-5 bg-red-600 text-white py-4 rounded-xl font-bold hover:bg-red-700 transition">
+            Place Order →
+        </button>
+
+    </div>
+</div>
+
+
+<!-- TOAST -->
+<div id="toast"
+    class="fixed bottom-7 left-1/2 -translate-x-1/2 bg-stone-900 text-white px-6 py-3 rounded-full shadow-2xl hidden z-[100]">
+</div>
+
+
+<script>
+
+let cart = [];
+
+
+/* ADD TO CART */
+function addToCart(name, price) {
+
+    const existing = cart.find(item => item.name === name);
+
+    if (existing) {
+        existing.qty++;
+    } else {
+        cart.push({
+            name: name,
+            price: price,
+            qty: 1
+        });
+    }
+
+    updateCart();
+
+    showToast(name + " added to cart 🛒");
+}
+
+
+/* UPDATE CART */
+function updateCart() {
+
+    const cartItems = document.getElementById("cartItems");
+    const cartCount = document.getElementById("cartCount");
+    const cartTotal = document.getElementById("cartTotal");
+
+    let total = 0;
+    let count = 0;
+
+    cart.forEach(item => {
+        total += item.price * item.qty;
+        count += item.qty;
+    });
+
+    cartCount.innerText = count;
+    cartTotal.innerText = "₹" + total;
+
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML = `
+            <div class="text-center py-20 text-stone-400">
+                <div class="text-6xl">🛒</div>
+                <p class="mt-4">Your cart is empty.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    cartItems.innerHTML = cart.map((item,index) => `
+
+        <div class="flex items-center gap-4 border-b pb-5 mb-5">
+
+            <div class="w-16 h-16 rounded-xl bg-orange-50 flex items-center justify-center text-3xl">
+                🥣
+            </div>
+
+            <div class="flex-1">
+                <h4 class="font-bold">${item.name}</h4>
+
+                <div class="text-red-600 font-semibold mt-1">
+                    ₹${item.price}
+                </div>
+
+                <div class="flex items-center gap-3 mt-2">
+
+                    <button onclick="changeQty(${index},-1)"
+                        class="w-7 h-7 rounded-full bg-stone-100">
+                        −
+                    </button>
+
+                    <span>${item.qty}</span>
+
+                    <button onclick="changeQty(${index},1)"
+                        class="w-7 h-7 rounded-full bg-stone-100">
+                        +
+                    </button>
+
+                </div>
+            </div>
+
+            <button onclick="removeItem(${index})"
+                class="text-red-500">
+                🗑️
+            </button>
+
+        </div>
+
+    `).join("");
+}
+
+
+/* CHANGE QUANTITY */
+function changeQty(index, amount) {
+
+    cart[index].qty += amount;
+
+    if (cart[index].qty <= 0) {
+        cart.splice(index,1);
+    }
+
+    updateCart();
+}
+
+
+/* REMOVE */
+function removeItem(index) {
+
+    cart.splice(index,1);
+    updateCart();
+}
+
+
+/* OPEN CART */
+function openCart() {
+
+    document.getElementById("cartDrawer").classList.add("cart-open");
+
+    const overlay = document.getElementById("cartOverlay");
+
+    overlay.classList.remove("opacity-0");
+    overlay.classList.remove("pointer-events-none");
+}
+
+
+/* CLOSE CART */
+function closeCart() {
+
+    document.getElementById("cartDrawer").classList.remove("cart-open");
+
+    const overlay = document.getElementById("cartOverlay");
+
+    overlay.classList.add("opacity-0");
+    overlay.classList.add("pointer-events-none");
+}
+
+
+/* CHECKOUT */
+function checkout() {
+
+    if (cart.length === 0) {
+        showToast("Please add something to your cart first!");
+        return;
+    }
+
+    const total = cart.reduce(
+        (sum,item) => sum + item.price * item.qty,
+        0
+    );
+
+    alert(
+        "🎉 Order Received!\n\n" +
+        "Your Jalaram Locho order is worth ₹" +
+        total +
+        ".\n\nThank you for ordering!"
+    );
+
+    cart = [];
+    updateCart();
+    closeCart();
+}
+
+
+/* MENU FILTER */
+function filterMenu(category, button) {
+
+    document.querySelectorAll(".menu-filter").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    document.querySelectorAll(".menu-item").forEach(item => {
+
+        if (category === "all" || item.classList.contains(category)) {
+            item.classList.remove("hide");
+        } else {
+            item.classList.add("hide");
+        }
+
+    });
+}
+
+
+/* TOAST */
+function showToast(message) {
+
+    const toast = document.getElementById("toast");
+
+    toast.innerText = message;
+    toast.classList.remove("hidden");
+    toast.classList.add("toast");
+
+    setTimeout(() => {
+        toast.classList.add("hidden");
+    }, 2200);
+}
+
+
+/* FORM */
+function submitForm(event) {
+
+    event.preventDefault();
+
+    showToast("Message sent successfully ❤️");
+
+    event.target.reset();
+}
+
+
+/* ESCAPE KEY */
+document.addEventListener("keydown", function(e) {
+
+    if (e.key === "Escape") {
+        closeCart();
+    }
+
+});
+
+</script>
+
+</body>
+</html>
